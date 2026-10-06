@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title th:text="#{anzeige.liste.titel}">
+        Anzeigen
+    </title>
+
+    <style>
+        :root {
+            --bg: #eef2f7;
+            --card: #ffffff;
+            --accent: #2b405b;
+            --text: #1f2937;
+            --border: #cbd5e1;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .seitenkopf {
+            background: var(--accent);
+            width: 100%;
+            padding: 24px 0;
+            margin: 0 0 36px 0;
+        }
+
+        .seitenfuss {
+            background: var(--accent);
+            width: 100%;
+            height: 48px;
+            margin-top: 40px;
+        }
+
+        .content-width {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .kopf-inhalt {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .kopf-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .app-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--card);
+        }
+
+        .hauptnavigation {
+            display: flex;
+            gap: 18px;
+        }
+
+        .hauptnavigation a,
+        .sprachwahl a {
+            color: var(--card);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .hauptnavigation a {
+            font-size: 1rem;
+        }
+
+        .sprachwahl {
+            display: flex;
+            gap: 12px;
+        }
+
+        .sprachwahl a {
+            font-size: 0.9rem;
+        }
+
+        .login-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .login-status span,
+        .login-status a {
+            color: var(--card);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .login-status a:hover {
+            opacity: 0.75;
+        }
+
+        .hauptnavigation a:hover,
+        .sprachwahl a:hover {
+            opacity: 0.75;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        th {
+            background: var(--accent);
+            color: white;
+            padding: 14px;
+            text-align: left;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        td a {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        .button-row {
+            margin-top: 24px;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 8px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a.button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+<div th:replace="~{fragments/kopffuss :: kopf}"></div>
+
+<div class="container">
+
+    <h1 th:text="#{anzeige.liste.titel}">
+        Anzeigen
+    </h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th th:text="#{anzeige.liste.spalte.anbietername}">Anbieter</th>
+            <th th:text="#{anzeige.liste.spalte.titel}">Titel</th>
+            <th th:text="#{anzeige.liste.spalte.preis}">Preis</th>
+            <th th:text="#{anzeige.liste.spalte.anzahl}">Anzahl</th>
+            <th th:text="#{anzeige.liste.spalte.bestellt}">Bestellt</th>
+            <th th:text="#{anzeige.liste.spalte.ablaufdatum}">Ablaufdatum</th>
+            <th th:text="#{anzeige.liste.spalte.bearbeiten}">Bearbeiten</th>
+            <th th:text="#{anzeige.liste.spalte.loeschen}">Löschen</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="anzeige : ${anzeigen}">
+            <td th:text="${anzeige.anbieter != null ? anzeige.anbieter.name : '(unbekannt)'}">
+                Anbieter
+            </td>
+
+            <td th:text="${anzeige.titel}">
+                Titel
+            </td>
+
+            <td th:text="${anzeige.preis}">
+                Preis
+            </td>
+
+            <td th:text="${anzeige.anzahl}">
+                Anzahl
+            </td>
+
+            <td th:text="${anzeige.besteller.size()}">
+                0
+            </td>
+
+            <td th:text="${anzeige.ablaufdatum}">
+                Datum
+            </td>
+
+            <td>
+                <a th:href="@{/admin/anzeige/{id}(id=${anzeige.id})}"
+                   th:text="#{anzeige.liste.spalte.bearbeiten}">
+                    bearbeiten
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{/admin/anzeige/{id}/delete(id=${anzeige.id})}"
+                   th:text="#{anzeige.liste.spalte.loeschen}">
+                    löschen
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="button-row">
+        <a class="button"
+           th:href="@{/admin/anzeige/0}"
+           th:text="#{anzeige.liste.neuanzeige}">
+            Neue Anzeige
+        </a>
+
+        <a class="button"
+           th:href="@{/admin/anzeige/verlosung}"
+           th:text="#{anzeige.liste.verlosung}">
+            Verlosung starten
+        </a>
+    </div>
+
+</div>
+
+<div th:replace="~{fragments/kopffuss :: fuss}"></div>
+
+</body>
+</html>

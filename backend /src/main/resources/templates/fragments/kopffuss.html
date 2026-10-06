@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+<header th:fragment="kopf" class="seitenkopf">
+
+    <div class="kopf-inhalt content-width">
+
+        <div class="kopf-links">
+
+            <!--App- Titel: Übersetzungskeys aus message.properties-->
+            <div class="app-title" th:text="#{app.titel}">
+                Benutzerverwaltung
+            </div>
+        
+        <!--Links zu wichtigsten Seiten-->
+        <nav class="hauptnavigation">
+
+            <a th:href="@{/admin/benutzer}"
+                th:text="#{kopf.benutzer}"
+                sec:authorize="hasRole('ADMINISTRATOR')">
+                Benutzer
+            </a>
+
+        <a th:href="@{/admin/anzeige}"
+            th:text="#{kopf.anzeigen}">
+            Anzeigen
+        </a>
+
+        </nav>
+        
+        </div>
+
+        <!--Sprachumschaltung-->
+        <nav class="sprachwahl">
+
+            <a th:href="@{?sprache=de}">
+                Deutsch
+            </a>
+
+            <a th:href="@{?sprache=en}">
+                English
+            </a>
+
+            <a th:href="@{?sprache=nl}">
+                Nederlands
+            </a>
+
+        </nav>
+
+        <!--Login-Status und Logout-->
+        <nav class="login-status" sec:authorize="isAuthenticated()">
+            <span sec:authentication="name"></span>
+            <a th:href="@{/logout}">ausloggen</a>
+        </nav>
+
+    </div>
+
+</header>
+
+<footer th:fragment="fuss" class="seitenfuss"></footer>
+
+</body>
+</html>
