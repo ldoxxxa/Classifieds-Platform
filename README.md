@@ -1,7 +1,7 @@
 # Classifieds Platform — Full-Stack Web Application
 
 **Semester project for the “Web-Based Applications” course**  
-RheinMain University of Applied Sciences | Summer Semester 2026
+University of Applied Science RheinMain | Summer Semester 2026
 
 ---
 
