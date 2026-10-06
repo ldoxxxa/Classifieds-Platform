@@ -88,6 +88,82 @@ Data is available while the backend is running but is not retained after it is s
 - Validating form input and handling errors
 - Integrating real-time communication with WebSockets and STOMP
 
+## 🚀 Getting Started
+
+### Requirements
+
+- Java Development Kit (JDK) 21
+- Node.js 24.12 or later, with npm
+- Python 3, available as `python3`
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/ldoxxxa/Classifieds-Platform.git
+cd Classifieds-Platform
+```
+
+### 2. Start the Backend
+
+Open a terminal in the repository folder.
+
+**macOS / Linux**
+
+```bash
+cd backend
+chmod +x gradlew
+./gradlew bootRun
+```
+
+**Windows**
+
+```powershell
+cd backend
+.\gradlew.bat bootRun
+```
+
+The backend runs at http://localhost:8080.
+
+Keep this terminal open while using the application.
+
+> The build uses Python to generate translation files. On Windows,
+> Python must also be available through the `python3` command.
+
+### 3. Start the Frontend
+
+Open a second terminal in the repository folder.
+
+Install the root dependencies first, then the frontend dependencies:
+
+```bash
+npm install
+cd frontend
+npm install
+npm run dev
+```
+
+Open http://localhost:5173 in your browser, or use the URL shown
+in the terminal if that port is already in use.
+
+Keep both the backend and frontend running.
+
+### 4. Open the Application
+
+| Page | URL |
+|---|---|
+| Vue frontend | http://localhost:5173 |
+| Listings | http://localhost:5173/anzeige |
+| Frontend login | http://localhost:5173/login |
+| User administration | http://localhost:8080/admin/benutzer |
+| Listing administration | http://localhost:8080/admin/anzeige |
+
+Administration pages require authentication.
+
+### Database
+
+The application uses an in-memory H2 database. Data is not retained
+after the backend is stopped or restarted.
+
 ---
 
 Developed as part of my Media Informatics studies at RheinMain University of Applied Sciences.
