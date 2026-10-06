@@ -1,0 +1,20 @@
+@import './base.css';
+
+#app {
+  width: 100%;                                          /*Container nimmt volle verfügbare Breite an nicht mehr auf 1280px begrenzt*/
+  font-weight: normal; 
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}

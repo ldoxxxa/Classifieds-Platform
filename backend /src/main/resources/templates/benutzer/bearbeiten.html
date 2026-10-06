@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{benutzer.bearbeiten.titel(${loginname})}">Benutzer bearbeiten</title>
+
+    <style>
+        :root {
+            --bg: #eef2f7;
+            --card: #ffffff;
+            --accent: #2b405b;
+            --accent-dark: #2b405b;
+            --text: #1f2937;
+            --muted: #4b5563;
+            --border: #cbd5e1;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, form {
+            max-width: 720px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 50px auto 28px auto;
+            padding: 0 20px;
+        }
+
+        form {
+            background: var(--card);
+            padding: 32px 36px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 24px rgba(85, 35, 35, 0.15);
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            gap: 18px;
+        }
+
+        .form-row label {
+            width: 190px;
+            flex-shrink: 0;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        .form-row input,
+        .form-row select {
+            flex: 1;
+            padding: 10px 12px;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: white;
+            color: var(--text);
+        }
+
+        .form-row input[type="checkbox"] {
+            flex: 0;
+            width: auto;
+        }
+
+        .field-error {
+            border: 2px solid red !important;
+        }
+
+        .error-text {
+            color: red;
+            font-size: 0.9rem;
+            margin-left: 208px;
+            margin-top: -10px;
+            margin-bottom: 14px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 32px;
+            gap: 16px;
+        }
+
+        button {
+            padding: 10px 26px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--accent);
+            cursor: pointer;
+        }
+
+        button[type="button"] {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        button[type="submit"] {
+            background: var(--accent);
+            color: white;
+        }
+
+        .seitenkopf {
+            background: var(--accent);
+            width: 100%;
+            padding: 24px 0;
+            margin: 0 0 36px 0;
+        }
+
+        .seitenfuss {
+            background: var(--accent);
+            width: 100%;
+            height: 48px;
+            margin-top: 40px;
+        }
+
+        .content-width {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+        box-sizing: border-box;
+        }
+
+        .kopf-inhalt {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .kopf-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .app-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--card);
+        }
+
+        .hauptnavigation {
+            display: flex;
+            gap: 18px;
+        }
+
+        .hauptnavigation a,
+        .sprachwahl a {
+            color: var(--card);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .hauptnavigation a {
+            font-size: 1rem;
+        }
+
+        .sprachwahl {
+            display: flex;
+            gap: 12px;
+        }
+
+        .sprachwahl a {
+            font-size: 0.9rem;
+        }
+
+        .hauptnavigation a:hover,
+        .sprachwahl a:hover {
+            opacity: 0.75;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div th:replace="~{fragments/kopffuss :: kopf}"></div>
+
+<h1 th:text="#{benutzer.bearbeiten.titel(${loginname})}">
+    Benutzer bearbeiten
+</h1>
+
+<!--Fehlermeldung-->
+<div th:if="${info}" class="error-text" th:text="${info}">
+    Fehlermeldung
+</div>
+
+<form method="post"
+      th:object="${formular}"
+      th:action="@{/admin/benutzer/{loginname}(loginname=${loginname})}">
+
+    <!-- Neues Textfeld hinzufügen-->
+    <div class="form-row">
+        <label for="name" th:text="#{benutzer.name}">Name:</label>
+        <input id="name" type="text" th:field="*{name}" th:errorclass="field-error">
+    </div>
+
+    <!--Fehlermeldung-->
+    <div class="error-text" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+        Fehler beim Namen
+    </div>
+
+    <div class="form-row">
+        <label for="email" th:text="#{benutzer.email}">E-Mail:</label>
+        <input id="email" type="text" th:field="*{email}" th:errorclass="field-error">
+    </div>
+    <div class="error-text" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+        Fehler bei der E-Mail
+    </div>
+
+   <div class="form-row">
+        <label for="adresse" th:text="#{benutzer.adresse}">Adresse:</label>
+        <input id="adresse" type="text" th:field="*{adresse}" th:errorclass="field-error">
+    </div>
+    <div class="error-text" th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}">
+        Fehler bei der Adresse
+    </div>
+
+    <div class="form-row">
+        <label for="rolle" th:text="#{benutzer.rolle}">Rolle:</label>
+        <select id="rolle" th:field="*{rolle}">
+            <option value=""></option>
+            <option value="ADMINISTRATOR" th:text="#{benutzer.rolle.administrator}">
+                Administrator
+            </option>
+            <option value="ANBIETER" th:text="#{benutzer.rolle.anbieter}">
+                Anbieter
+            </option>
+            <option value="TESTER" th:text="#{benutzer.rolle.tester}">
+                Tester
+            </option>
+        </select>
+    </div>
+
+    <!--Passwort damit Eingabe versteckt wird-->
+    <div class="form-row">
+        <label for="passwort" th:text="#{benutzer.passwort}">Passwort:</label>
+        <input id="passwort" type="password" th:field="*{passwort}" th:errorclass="field-error">
+    </div>
+    <div class="error-text" th:if="${#fields.hasErrors('passwort')}" th:errors="*{passwort}">
+        Fehler beim Passwort
+    </div>
+
+    <div class="form-row">
+        <label for="passwortWdh" th:text="#{benutzer.passwort2}">
+            Passwort wiederholen:
+        </label>
+        <input id="passwortWdh" type="password" th:field="*{passwortWdh}" th:errorclass="field-error">
+    </div>
+    <div class="error-text" th:if="${#fields.hasErrors('passwortWdh')}" th:errors="*{passwortWdh}">
+        Fehler bei der Passwort-Wiederholung
+    </div>
+
+    <div class="form-row">
+        <label for="aktiviert" th:text="#{benutzer.aktiviert}">aktiviert</label>
+        <input id="aktiviert" type="checkbox" th:field="*{aktiviert}">
+    </div>
+
+    <div class="buttons">
+        <button type="button" th:text="#{button.abbruch}">Abbruch</button>
+        <button type="submit" th:text="#{button.ok}">OK</button>
+    </div>
+
+</form>
+
+<!--Bestellungen-->
+<h2 th:text="#{benutzer.bestellungen}">
+    Bestellte Artikel
+</h2>
+
+<ul>
+    <li th:each="anzeige : ${bestellungen}"
+        th:text="${anzeige.titel}">
+        Beispielanzeige
+    </li>
+</ul>
+
+<!--Fußzeile-->
+<div th:replace="~{fragments/kopffuss :: fuss}"></div>
+
+</body>
+</html>

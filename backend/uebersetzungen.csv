@@ -1,0 +1,57 @@
+propertyname;en;de;nl
+benutzer.name;Name;Name;Naam
+benutzer.email;E-Mail;E-Mail;E-mailadres
+benutzer.adresse;Address;Adresse;Adres
+benutzer.rolle;Role;Rolle;Rol
+benutzer.rolle.administrator;Administrator;Administrator;Administrator
+benutzer.rolle.anbieter;Provider;Anbieter;Aanbieder
+benutzer.rolle.tester;Tester;Tester;Tester
+benutzer.passwort;Password;Passwort;Wachtwoord
+benutzer.passwort2;Repeat password;Passwort (Wiederholung);Wachtwoord herhalen
+benutzer.fehler.name.leer;Name must not be empty;Name darf nicht leer sein;Naam mag niet leeg zijn
+benutzer.fehler.name.groesse;Name must be between 3 and 60 characters;Bitte Name der Länge von 3 bis 60 Zeichen eingeben;Naam moet tussen 3 en 60 tekens lang zijn
+benutzer.fehler.email.leer;E-mail must not be empty;E-Mail darf nicht leer sein;E-mailadres mag niet leeg zijn
+benutzer.fehler.email.ungueltig;Please enter a valid e-mail address;Bitte gültige E-Mail-Adresse eingeben;Vul een geldig e-mailadres in
+benutzer.fehler.passwort;Password is not allowed;Passwort ist nicht geeignet;Dit wachtwoord is niet geschikt
+benutzer.fehler.passwortwiederholung;Passwords do not match;Passworteingaben stimmen nicht überein;Wachtwoorden komen niet overeen
+benutzer.fehler.passwort.leer;New user cannot be saved without a password;Neuer Benutzer kann nicht ohne Passwort gespeichert werden;Nieuwe gebruiker kan niet worden opgeslagen zonder wachtwoord
+benutzer.bearbeiten.titel;Edit user {0};Benutzer {0} bearbeiten;Gebruiker {0} bewerken
+benutzer.aktiviert;activated;aktiviert;geactiveerd
+button.abbruch;Cancel;Abbruch;afbreken
+button.ok;OK;OK;OK
+app.titel;User management;Benutzerverwaltung;Gebruikersbeheer
+
+benutzer.aktionen;Actions;Aktionen;Acties
+button.bearbeiten;Edit;Bearbeiten;Bewerken
+button.loeschen;Delete;Loeschen;Verwijderen
+benutzer.liste.titel;User list;Benutzerliste;Gebruikerslijst
+benutzer.loginname;Login name;Loginname;Gebruikersnaam
+
+kopf.anzeigen;Advertisements;Anzeigen;Advertenties
+
+anzeige.liste.titel;Advertisements;Anzeigen;Advertenties
+anzeige.liste.spalte.anbietername;Provider;Anbieter;Aanbieder
+anzeige.liste.spalte.titel;Title;Titel;Titel
+anzeige.liste.spalte.preis;Price;Preis;Prijs
+anzeige.liste.spalte.anzahl;Quantity;Anzahl;Aantal
+anzeige.liste.spalte.bestellt;Ordered;Bestellt;Besteld
+anzeige.liste.spalte.ablaufdatum;Expiration date;Ablaufdatum;Vervaldatum
+anzeige.liste.spalte.bearbeiten;Edit;Bearbeiten;Bewerken
+anzeige.liste.spalte.loeschen;Delete;Löschen;Verwijderen
+anzeige.liste.neuanzeige;New advertisement;Neue Anzeige;Nieuwe advertentie
+anzeige.liste.verlosung;Start lottery;Verlosung starten;Loterij starten
+
+anzeige.bearbeiten.neu.titel;Create advertisement;Anzeige anlegen;Advertentie aanmaken
+anzeige.bearbeiten.titel;Edit advertisement;Anzeige bearbeiten;Advertentie bewerken
+anzeige.bearbeiten.anbieter;Provider;Anbieter;Aanbieder
+anzeige.bearbeiten.beschreibung;Description;Beschreibung;Beschrijving
+anzeige.bearbeiten.preis;Price;Preis;Prijs
+anzeige.bearbeiten.anzahl;Quantity;Anzahl;Aantal
+anzeige.bearbeiten.ablaufdatum;Expiration date;Ablaufdatum;Vervaldatum
+anzeige.bearbeiten.ok;OK;OK;OK
+anzeige.bearbeiten.abbrechen;Cancel;Abbrechen;Annuleren
+
+benutzer.bestellungen;Ordered items;Bestellte Artikel;Bestelde artikelen
+
+kopf.anzeigen;Advertisements;Anzeigen;Advertenties
+kopf.benutzer;Users;Benutzer;Gebruikers
